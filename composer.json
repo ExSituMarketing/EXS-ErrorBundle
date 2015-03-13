@@ -1,0 +1,25 @@
+{
+    "name": "exs/error-bundle",
+    "type": "symfony-bundle",
+    "description": "Error logging bundle for Symfony2",
+    "keywords": ["error", "logging", "bundle", "500", "404"],
+    "homepage": "https://github.com/ExSituMarketing/EXS-ErrorBundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Charles Weiss",
+            "email": "charles@ex-situ.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.2"
+    },
+    "require-dev": {
+        "symfony/framework-bundle": ">=2.1,<=2.7-dev"
+    },
+    "autoload": {
+        "psr-0": { "EXS\\ErrorBundle": "" }
+    },
+    "minimum-stability": "dev",
+    "target-dir": "EXS/ErrorBundle"
+}
