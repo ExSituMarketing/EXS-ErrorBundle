@@ -23,6 +23,14 @@ https://github.com/rumpranger/EXSErrorBundle
 * Place the bundle in your src folder
 * Register the bundle in AppKernel.php 
 
+```js
+//composer.json
+//...
+"require": {
+        //other bundles
+        "exs/error-bundle": "dev-master"
+```
+
 ```php
     public function registerBundles()
     {
@@ -45,14 +53,34 @@ php app/console doctrine:schema:update --force
 
 
 You can test that it works by throwing 500 and 400 series errors from your app. The errors will be logged (along with useful debugging information) in your database in the following tables: 
+
 * exception4xx
+
 * exception5xx
+
+If you wish to test the exceptions being thrown via the included controller you can try updating your routing file with the following routes
+
+
+```
+// app/routing.yml
+//...
+error:
+    resource: @EXSErrorBundle/Controller/
+    type:     annotation
+```
+
 * http://www.example.com/app_dev.php/_test/error/http/500
+
 * http://www.example.com/app_dev.php/_test/error/http/404
+
 * http://www.example.com/app_dev.php/_test/error/http/403
+
 * http://www.example.com/app_dev.php/_test/error/http/405
+
 * http://www.example.com/app_dev.php/_test/error/http/410
+
 * http://www.example.com/app_dev.php/_test/error/php/fatal
+
 * http://www.example.com/app_dev.php/_test/error/php/notice
 
 #### Contributing ####
