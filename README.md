@@ -11,16 +11,15 @@ Bundle is installed as a service and traps all 4xx and 5xx http exceptions in th
 
 1. Clone the Github repo: 
 ```bash
-https://github.com/rumpranger/EXSErrorBundle.git
+https://github.com/ExSituMarketing/EXS-ErrorBundle.git
 ```
-2. The zip from my Github: 
+2. The zip from this Github: 
 ```bash
-https://github.com/rumpranger/EXSErrorBundle
+https://github.com/ExSituMarketing/EXS-ErrorBundle/archive/master.zip
 ```
 
 ## Installation ##
 
-* Place the bundle in your src folder
 * Register the bundle in AppKernel.php 
 
 ```js
