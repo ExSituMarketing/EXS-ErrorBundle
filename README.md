@@ -84,3 +84,8 @@ error:
 
 #### Contributing ####
 Anyone and everyone is welcome to contribute.
+
+If you have any questions or suggestions for the next step of our tutorial please [let us know][1].
+
+
+[1]: http://www.ex-situ.com/
