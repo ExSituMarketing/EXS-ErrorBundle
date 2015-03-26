@@ -81,13 +81,11 @@ If you wish to test the exceptions being thrown via the included controller you 
 
 If you want to test the console exceptions try:
 
-
-* php app/console _test:command:fatal
-
-* php app/console _test:command:notice
-
-* php app/console _test:command:exception
-
+``` shell
+php app/console _test:command:fatal
+php app/console _test:command:notice
+php app/console _test:command:exception
+```
 
 
 #### Contributing ####
