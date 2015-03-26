@@ -60,6 +60,20 @@ class ExceptionLogManager
         return;
     }
 
+        /**
+     * Method called to log an actual exception
+     * Requires the request for debugging purposes and the exception
+     *
+     * @param  Symfony\Component\Debug\Exception\FlattenException $exception
+     * @param  string $command
+     * @return boolean
+     */
+    public function logConsoleException(FlattenException $exception, $command = '')
+    {
+        $this->Exception5xxLogger->logConsoleException($exception, get_class($command));
+        return;
+    }
+    
     /**
      * Get the type of exception to log (dictates entity)
      * @param  Symfony\Component\Debug\Exception\FlattenException $exception

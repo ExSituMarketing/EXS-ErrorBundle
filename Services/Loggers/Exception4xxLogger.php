@@ -29,7 +29,7 @@ class Exception4xxLogger extends ExceptionLogger
         $ex = new Exception4xx();
         $ex->setStatusCode($this->getStatusCode($exception));
         $ex->setMessage($exception->getMessage());
-        $ex->setRequestUrl($this->getRequest($request));
+        $ex->setRequestUrl($request->getRequestUri());
         $ex->setReferrer($request->server->get('HTTP_REFERER'));
         $ex->setUserAgent($request->server->get('HTTP_USER_AGENT'));
         $ex->setRemoteIp($request->server->get('REMOTE_ADDR'));

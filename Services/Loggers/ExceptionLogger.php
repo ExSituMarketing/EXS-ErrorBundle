@@ -49,23 +49,6 @@ abstract class ExceptionLogger implements ExceptionLoggerInterface
         return $traceMessage;
     }
 
-    /**
-     * Parses the server super global for command line arguments
-     * Uses the command line arguments as the request
-     * @param  Symfony\Component\HttpFoundation\Request $request
-     * @return string
-     */
-    public function getRequest(Request $request)
-    {
-        $str = '';
-        if (isset($_SERVER['argv'])) {
-            $str = "$ " . implode(" ", filter_input(INPUT_SERVER, 'argv'));
-        } elseif (!empty($request)) {
-            $str = $request->getRequestUri();
-        }
-
-        return $str;
-    }
 
     /**
      * Attempts to extract a nice exception code string

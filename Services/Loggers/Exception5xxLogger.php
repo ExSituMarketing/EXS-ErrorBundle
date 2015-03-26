@@ -33,7 +33,7 @@ class Exception5xxLogger extends ExceptionLogger
         $ex->setLine($exception->getLine());
         $ex->setTrace($this->getTrace($exception->getTrace()));
         $ex->setMessage($exception->getMessage());
-        $ex->setRequestUrl($this->getRequest($request));
+        $ex->setRequestUrl($request->getRequestUri());
         $ex->setReferrer($request->server->get('HTTP_REFERER'));
         $ex->setUserAgent($request->server->get('HTTP_USER_AGENT'));
         $ex->setRemoteIp($request->server->get('REMOTE_ADDR'));
@@ -49,6 +49,48 @@ class Exception5xxLogger extends ExceptionLogger
         } catch (\Exception $e) {
             // Silence
         }
+    }
+
+    public function logConsoleException(FlattenException $exception, $command = '')
+    {
+
+        $ex = new Exception5xx();
+        $ex->setStatusCode($this->getStatusCode($exception));
+        $ex->setFile($exception->getFile());
+        $ex->setLine($exception->getLine());
+        $ex->setTrace($this->getTrace($exception->getTrace()));
+        $ex->setMessage($exception->getMessage());
+        $ex->setRequestUrl($this->getCommands());
+        $ex->setReferrer($command);
+        $ex->setUserAgent('');
+        $ex->setRemoteIp('');
+        $ex->setMethod('argv');
+        $ex->setQueryString('');
+        $ex->setHostname(php_uname('n'));
+        $ex->setRequest('');
+        $ex->setLogged(new \DateTime("now"));
+        try {
+            $this->EntityManager->persist($ex);
+            //you dont want to flush the full entity manager. only the error.
+            $this->EntityManager->flush($ex);
+        } catch (\Exception $e) {
+            // Silence
+        }
+    }
+
+    /**
+     * Parses the server super global for command line arguments
+     * Uses the command line arguments as the request
+     * @return string
+     */
+    public function getCommands()
+    {
+        $str = '';
+        if (isset($_SERVER['argv'])) {
+            $str = "$ " . implode(" ", $_SERVER['argv']);
+        }
+
+        return $str;
     }
 
 }

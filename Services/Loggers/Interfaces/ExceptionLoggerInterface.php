@@ -22,6 +22,4 @@ interface ExceptionLoggerInterface
     public function logException(FlattenException $exception, Request $request);
 
     public function getTrace($trace = array());
-
-    public function getRequest(Request $request);
 }
