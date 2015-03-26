@@ -79,6 +79,17 @@ If you wish to test the exceptions being thrown via the included controller you 
 * http://www.example.com/app_dev.php/_test/error/php/notice
 
 
+If you want to test the console exceptions try:
+
+
+* php app/console _test:command:fatal
+
+* php app/console _test:command:notice
+
+* php app/console _test:command:exception
+
+
+
 #### Contributing ####
 Anyone and everyone is welcome to contribute.
 
