@@ -120,7 +120,7 @@ class ExceptionListener implements EventSubscriberInterface
             error_log(sprintf("PHP %s: %s in %s on line %d", $errors, $message, $file, $line));
         }
         //save any error.
-        $this->onAnyException(new \ErrorException($message, 1, $level, $file, $line));
+        return $this->onAnyException(new \ErrorException($message, 1, $level, $file, $line));
     }
 
     /**

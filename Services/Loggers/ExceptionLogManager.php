@@ -73,7 +73,7 @@ class ExceptionLogManager
         $this->Exception5xxLogger->logConsoleException($exception, get_class($command));
         return;
     }
-    
+
     /**
      * Get the type of exception to log (dictates entity)
      * @param  Symfony\Component\Debug\Exception\FlattenException $exception

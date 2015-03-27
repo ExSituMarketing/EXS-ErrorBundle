@@ -11,7 +11,7 @@ services:
         arguments:
             logger: "@exs.exception_log_manager"
         tags:
-            - { name: kernel.event_listener, event: console.exception }          
+            - { name: kernel.event_listener, event: console.exception }
     ## Manages the entity for exceptions
     exs.exception_log_manager:
         class: EXS\ErrorBundle\Services\Loggers\ExceptionLogManager
