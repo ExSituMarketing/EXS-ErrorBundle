@@ -10,13 +10,18 @@ Bundle is installed as a service listening for all 4xx and 5xx http exceptions a
 ## Installing the ErrorBundle in a new Symfony2 project
 So the ErrorBundle is ready for installation, great news but how do we install it.  The installation process is actually very simple.  Set up a new Symfony2 project with Composer.
 
+Require from the command line directly:
+```
+composer require 'exs/error-bundle:1.0'
+```
+
 Once the new project is set up, open the composer.json file and add the exs/error-bundle as a dependency:
 ``` js
 //composer.json
 //...
 "require": {
         //other bundles
-        "exs/error-bundle": "dev-master"
+        "exs/error-bundle": "~1.0@dev"
 ```
 Save the file and have composer update the project via the command line:
 ``` shell
