@@ -18,7 +18,7 @@ services:
         arguments: [@exs.exception4xx_logger, @exs.exception5xx_logger]
     exs.exception4xx_logger:
         class: EXS\ErrorBundle\Services\Loggers\Exception4xxLogger
-        arguments: [@doctrine.orm.entity_manager]
+        arguments: [@doctrine]
     exs.exception5xx_logger:
         class: EXS\ErrorBundle\Services\Loggers\Exception5xxLogger
-        arguments: [@doctrine.orm.entity_manager]
+        arguments: [@doctrine]

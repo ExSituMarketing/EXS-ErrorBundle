@@ -70,11 +70,13 @@ class Exception5xxLogger extends ExceptionLogger
         $ex->setRequest('');
         $ex->setLogged(new \DateTime("now"));
         try {
-            $this->EntityManager->persist($ex);
+            $this->EntityManager->resetManager('default');
+            $em = $this->EntityManager->getManager('default');
+            $em->persist($ex);
             //you dont want to flush the full entity manager. only the error.
-            $this->EntityManager->flush($ex);
+            $em->flush($ex);
         } catch (\Exception $e) {
-            // Silence
+            //silence
         }
     }
 
