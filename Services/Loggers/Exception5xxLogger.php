@@ -43,9 +43,9 @@ class Exception5xxLogger extends ExceptionLogger
         $ex->setRequest(Flattener::flattenArrayToString($request->request->all()));
         $ex->setLogged(new \DateTime("now"));
         try {
-            $this->EntityManager->persist($ex);
+            $this->registry->persist($ex);
             //you dont want to flush the full entity manager. only the error.
-            $this->EntityManager->flush($ex);
+            $this->registry->flush($ex);
         } catch (\Exception $e) {
             // Silence
         }
@@ -70,8 +70,8 @@ class Exception5xxLogger extends ExceptionLogger
         $ex->setRequest('');
         $ex->setLogged(new \DateTime("now"));
         try {
-            $this->EntityManager->resetManager('default');
-            $em = $this->EntityManager->getManager('default');
+            $this->registry->resetManager('default');
+            $em = $this->registry->getManager('default');
             $em->persist($ex);
             //you dont want to flush the full entity manager. only the error.
             $em->flush($ex);

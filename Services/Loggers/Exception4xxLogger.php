@@ -40,8 +40,8 @@ class Exception4xxLogger extends ExceptionLogger
 
         $ex->setLogged(new \DateTime("now"));
         try {
-            $this->EntityManager->resetManager('default');
-            $em = $this->EntityManager->getManager('default');
+            $this->registry->resetManager('default');
+            $em = $this->registry->getManager('default');
             $em->persist($ex);
             //you dont want to flush the full entity manager. only the error.
             $em->flush($ex);

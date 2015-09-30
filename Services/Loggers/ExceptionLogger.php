@@ -2,7 +2,7 @@
 
 namespace EXS\ErrorBundle\Services\Loggers;
 
-use Doctrine\ORM\EntityManager;
+use Doctrine\Bundle\DoctrineBundle\Registry;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Debug\Exception\FlattenException;
 use EXS\ErrorBundle\Services\Loggers\Interfaces\ExceptionLoggerInterface;
@@ -20,18 +20,18 @@ abstract class ExceptionLogger implements ExceptionLoggerInterface
 
     /**
      * The entity manager
-     * @var Doctrine\ORM\EntityManager
+     * @var Doctrine\Bundle\DoctrineBundle\Registry
      */
-    protected $EntityManager;
+    protected $registry;
 
     /**
      * The constructor
-     * @param \Doctrine\ORM\EntityManager $EntityManager
+     * @param \Doctrine\Bundle\DoctrineBundle\Registry $registry
      * @access public
      */
-    public function __construct(EntityManager $EntityManager)
+    public function __construct(Registry $registry)
     {
-        $this->EntityManager = $EntityManager;
+        $this->registry = $registry;
     }
 
     /**
