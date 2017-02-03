@@ -44,6 +44,7 @@ Now just update the app/AppKernel.php and app/config/routing.yml to include our 
             new EXS\ErrorBundle\EXSErrorBundle()
         );
 ```
+add routing.yml:
 ```
 #app/config/routing.yml
 #...
@@ -52,6 +53,21 @@ contact:
     type:     annotation
     prefix:   /
 ```
+add the bundle to orm configuration:
+```
+#app/config/config.yml
+#...
+    orm:
+        auto_generate_proxy_classes: "%kernel.debug%"
+        default_entity_manager: default
+        entity_managers:
+            default:
+                connection: default
+                mappings:
+                    AppBundle:  ~
+                    EXSErrorBundle: ~
+```
+clear cache and update database:
 ``` shell
 php app/console cache:clear
 php app/console doctrine:schema:update --force
