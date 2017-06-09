@@ -13,16 +13,10 @@
     ],
     "require": {
         "php": ">=5.3.9",
-        "symfony/framework-bundle": ">=3.3"
+        "symfony/symfony": "2.8.*"
     },
     "autoload": {
         "psr-0": { "EXS\\ErrorBundle": "" }
-    },
-    "extra" : {
-        "branch-alias" : {
-            "dev-master" : "master",
-            "dev-v2" : "v2"
-        }
     },
     "minimum-stability": "dev",
     "target-dir": "EXS/ErrorBundle"
