@@ -12,9 +12,7 @@
         }
     ],
     "require": {
-        "php": ">=5.3.9"
-    },
-    "require-dev": {
+        "php": ">=5.3.9",
         "symfony/framework-bundle": ">=3.3"
     },
     "autoload": {
@@ -22,7 +20,8 @@
     },
     "extra" : {
         "branch-alias" : {
-            "dev-master" : "master"
+            "dev-master" : "master",
+            "dev-v2" : "v2"
         }
     },
     "minimum-stability": "dev",
