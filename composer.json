@@ -12,7 +12,9 @@
         }
     ],
     "require": {
-        "php": ">=5.3.9",
+        "php": ">=5.3.9"
+    },
+    "require-dev": {
         "symfony/framework-bundle": ">=3.3"
     },
     "autoload": {
