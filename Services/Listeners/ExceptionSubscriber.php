@@ -1,19 +1,15 @@
 <?php
-namespace EXS\ErrorBundle\Services\Subscribers;
-/**
- * Created by PhpStorm.
- * User: damiend
- * Date: 2017-06-12
- * Time: 9:14 AM
- */
-use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+
+namespace EXS\ErrorBundle\Services\Listeners;
+
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
-use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\HttpKernel\HttpKernel;
 use Symfony\Component\HttpKernel\Kernel;
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\Exception\FlattenException;
 use Symfony\Component\HttpFoundation\Request;
 use EXS\ErrorBundle\Services\Loggers\ExceptionLogManager;
+
 /**
  * Class ExceptionSubscriber
  */
