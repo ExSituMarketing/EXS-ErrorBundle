@@ -1,10 +1,4 @@
 services:
-    ## Listens for php errors and exceptions
-#    exs.exception_listener:
-#        class: EXS\ErrorBundle\Services\Listeners\ExceptionListener
-#        arguments: [@kernel, @exs.exception_log_manager]
-#        tags:
-#          - { name: kernel.event_listener, event: kernel.exception, method: onKernelException, priority: 0 }
     ## Listens on the command line
     kernel.listener.command_dispatch:
         class: EXS\ErrorBundle\Services\Listeners\ConsoleExceptionListener
@@ -22,8 +16,10 @@ services:
     exs.exception5xx_logger:
         class: EXS\ErrorBundle\Services\Loggers\Exception5xxLogger
         arguments: [@doctrine]
+
+    ## Subscriber for php errors and exceptions
     exs.exception_subscriber:
-        class: EXS\ErrorBundle\Services\Subscribers\ExceptionSubscriber
+        class: EXS\ErrorBundle\Services\Listeners\ExceptionSubscriber
         arguments: [@kernel, @exs.exception_log_manager]
         tags:
             - { name: kernel.event_subscriber }
