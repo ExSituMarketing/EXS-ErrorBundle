@@ -1,4 +1,5 @@
 <?php
+namespace EXS\ErrorBundle\Services\Subscribers;
 /**
  * Created by PhpStorm.
  * User: damiend
