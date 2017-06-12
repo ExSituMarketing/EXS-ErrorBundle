@@ -9,6 +9,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\Exception\FlattenException;
 use Symfony\Component\HttpFoundation\Request;
 use EXS\ErrorBundle\Services\Loggers\ExceptionLogManager;
+use Symfony\Component\Console\ConsoleEvents;
 
 /**
  * Class ExceptionSubscriber
