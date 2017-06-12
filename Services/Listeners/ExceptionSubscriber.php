@@ -1,15 +1,16 @@
 <?php
 
-namespace EXS\ErrorBundle\Services\Listeners;
+namespace EXS\ErrorBundle\Services\Subscribers;
 
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
 use Symfony\Component\HttpKernel\HttpKernel;
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\HttpKernel\Exception\FlattenException;
 use Symfony\Component\HttpFoundation\Request;
 use EXS\ErrorBundle\Services\Loggers\ExceptionLogManager;
 use Symfony\Component\Console\ConsoleEvents;
+use Symfony\Component\HttpKernel\KernelEvents;
+use Symfony\Component\Debug\Exception\FlattenException;
 
 /**
  * Class ExceptionSubscriber
@@ -184,7 +185,7 @@ class ExceptionSubscriber implements  EventSubscriberInterface
     {
         try {
             $this->logger->logException($exception, $request);
-        } catch (Exception $ex) {
+        } catch (\Exception $ex) {
             // Silence
         }
     }
