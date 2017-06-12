@@ -20,7 +20,7 @@ class ErrorController extends Controller
         try {
             throw new \Exception("This exception is caught and logged without breaking the app.");
         } catch (\Exception $e) {
-            $this->container->get("exs.exception_listener")->onAnyException($e);
+            $this->container->get("exs.exception_subscriber")->onAnyException($e);
         }
 
         $resp = $this->renderView('EXSErrorBundle:Error:index.html.twig', array());
