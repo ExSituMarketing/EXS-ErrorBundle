@@ -40,11 +40,10 @@ class Exception4xxLogger extends ExceptionLogger
 
         $ex->setLogged(new \DateTime("now"));
         try {
-            $this->registry->resetManager('default');
-            $em = $this->registry->getManager('default');
-            $em->persist($ex);
+            $manager = $this->registry->getManagerForClass('EXSErrorBundle:Exception4xx');
+            $manager->persist($ex);
             //you dont want to flush the full entity manager. only the error.
-            $em->flush($ex);
+            $manager->flush($ex);
         } catch (\Exception $e) {
             //silence
         }
