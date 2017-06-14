@@ -3,7 +3,7 @@
 namespace EXS\ErrorBundle\Services\Listeners;
 
 use Symfony\Component\Console\Event\ConsoleExceptionEvent;
-use Symfony\Component\HttpKernel\Exception\FlattenException;
+use Symfony\Component\Debug\Exception\FlattenException;
 use EXS\ErrorBundle\Services\Loggers\ExceptionLogManager;
 use Symfony\Component\HttpFoundation\Request;
 
