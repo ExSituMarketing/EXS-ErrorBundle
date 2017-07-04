@@ -20,6 +20,6 @@ services:
     ## Subscriber for php errors and exceptions
     exs.exception_subscriber:
         class: EXS\ErrorBundle\Services\Subscribers\ExceptionSubscriber
-        arguments: ["@kernel", "@exs.exception_log_manager"]
+        arguments: ["@kernel", "@exs.exception_log_manager","%deprecated_errors_logging%"]
         tags:
             - { name: kernel.event_subscriber }

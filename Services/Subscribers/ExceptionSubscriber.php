@@ -36,12 +36,17 @@ class ExceptionSubscriber implements  EventSubscriberInterface
     private $logger;
 
     /**
+     * @var boolean
+     */
+    private $logDeprecated;
+
+    /**
      * Constructor
      *
      * @param Kernel              $kernel
      * @param ExceptionLogManager $logger
      */
-    public function __construct(Kernel $kernel, ExceptionLogManager $logger)
+    public function __construct(Kernel $kernel, ExceptionLogManager $logger,$deprecatedErrorLogging)
     {
         // Set the kernel
         $this->kernel = $kernel;
@@ -51,6 +56,9 @@ class ExceptionSubscriber implements  EventSubscriberInterface
 
         // Set the logger
         $this->logger = $logger;
+
+        $this->logDeprecated = $deprecatedErrorLogging;
+
     }
     /**
      * @return array
@@ -89,8 +97,14 @@ class ExceptionSubscriber implements  EventSubscriberInterface
      */
     public function errorToException($level = 0, $message = '', $file = null, $line = 0, $context = array())
     {
+        $deprecated = false;
         if ($this->debug) {
             switch ($level) {
+                case E_DEPRECATED:
+                case E_USER_DEPRECATED:
+                    $deprecated = true;
+                    $errors = "Deprecated";
+                    break;
                 case E_NOTICE:
                 case E_USER_NOTICE:
                     $errors = "Notice";
@@ -110,8 +124,12 @@ class ExceptionSubscriber implements  EventSubscriberInterface
 
             error_log(sprintf("PHP %s: %s in %s on line %d", $errors, $message, $file, $line));
         }
-        //save any error.
-        return $this->onAnyException(new \ErrorException($message, 1, $level, $file, $line));
+        //save any error
+        if($this->logDeprecated || !$deprecated){
+            return $this->onAnyException(new \ErrorException($message, 1, $level, $file, $line));
+        } else {
+            //silence deprecated errors
+        }
     }
 
     /**
