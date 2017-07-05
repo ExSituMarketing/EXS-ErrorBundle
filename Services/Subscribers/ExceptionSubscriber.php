@@ -121,7 +121,9 @@ class ExceptionSubscriber implements  EventSubscriberInterface
                 break;
         }
 
-        error_log(sprintf("PHP %s: %s in %s on line %d", $errors, $message, $file, $line));
+        if ($this->debug) {
+            error_log(sprintf("PHP %s: %s in %s on line %d", $errors, $message, $file, $line));
+        }
         //save any error
         if($this->logDeprecated || !$deprecated){
             return $this->onAnyException(new \ErrorException($message, 1, $level, $file, $line));
