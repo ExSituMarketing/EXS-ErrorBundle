@@ -98,32 +98,30 @@ class ExceptionSubscriber implements  EventSubscriberInterface
     public function errorToException($level = 0, $message = '', $file = null, $line = 0, $context = array())
     {
         $deprecated = false;
-        if ($this->debug) {
-            switch ($level) {
-                case E_DEPRECATED:
-                case E_USER_DEPRECATED:
-                    $deprecated = true;
-                    $errors = "Deprecated";
-                    break;
-                case E_NOTICE:
-                case E_USER_NOTICE:
-                    $errors = "Notice";
-                    break;
-                case E_WARNING:
-                case E_USER_WARNING:
-                    $errors = "Warning";
-                    break;
-                case E_ERROR:
-                case E_USER_ERROR:
-                    $errors = "Fatal Error";
-                    break;
-                default:
-                    $errors = "Unknown Error";
-                    break;
-            }
-
-            error_log(sprintf("PHP %s: %s in %s on line %d", $errors, $message, $file, $line));
+        switch ($level) {
+            case E_DEPRECATED:
+            case E_USER_DEPRECATED:
+                $deprecated = true;
+                $errors = "Deprecated";
+                break;
+            case E_NOTICE:
+            case E_USER_NOTICE:
+                $errors = "Notice";
+                break;
+            case E_WARNING:
+            case E_USER_WARNING:
+                $errors = "Warning";
+                break;
+            case E_ERROR:
+            case E_USER_ERROR:
+                $errors = "Fatal Error";
+                break;
+            default:
+                $errors = "Unknown Error";
+                break;
         }
+
+        error_log(sprintf("PHP %s: %s in %s on line %d", $errors, $message, $file, $line));
         //save any error
         if($this->logDeprecated || !$deprecated){
             return $this->onAnyException(new \ErrorException($message, 1, $level, $file, $line));
