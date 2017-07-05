@@ -10,6 +10,7 @@ use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 use Symfony\Component\HttpKernel\Exception\GoneHttpException;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
+
 class ErrorController extends Controller
 {
     /**
@@ -60,6 +61,7 @@ class ErrorController extends Controller
     public function phpFatalAction()
     {
         trigger_error('sample PHP Fatal', E_USER_ERROR);
+        return new Response();
     }
 
     /**
@@ -68,6 +70,26 @@ class ErrorController extends Controller
     public function phpNoticeAction()
     {
         trigger_error('sample PHP Notice', E_USER_NOTICE);
+        return new Response();
     }
+
+    /**
+     * @Route("/_test/error/php/deprecated", name="error_php_deprecated")
+     */
+    public function phpDeprecatedAction()
+    {
+        trigger_error('sample PHP E_DEPRECATED', E_DEPRECATED);
+        return new Response();
+    }
+
+    /**
+     * @Route("/_test/error/php/user_deprecated", name="error_php_user_deprecated")
+     */
+    public function phpUserDeprecatedAction()
+    {
+        trigger_error('sample PHP E_USER_DEPRECATED', E_USER_DEPRECATED);
+        return new Response();
+    }
+
 
 }

@@ -67,6 +67,12 @@ add the bundle to orm configuration:
                     AppBundle:  ~
                     EXSErrorBundle: ~
 ```
+add deprecated errors params:
+```
+# parameters.yml:
+    deprecated_errors_logging: false
+
+```
 clear cache and update database:
 ``` shell
 php app/console cache:clear
